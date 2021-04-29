@@ -30,7 +30,7 @@ const userSchema = {
 const User = mongoose.model("User", userSchema);
 const Article = mongoose.model("Article", articleSchema);
 
-app.route("/")
+app.route("/home")
 .get((req,res)=>{
     res.sendFile(__dirname+"/welcome.html")
 });
