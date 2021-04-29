@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="css/formlayout.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Write Article</title>
+  </head>
+  <body>
+    <form action="/articles" method="post">
+        <h1>Welcome... Write your article in the given field</h1>
+      <div class="form__group field">
+        <input
+          type="input"
+          class="form__field"
+          placeholder="Title"
+          name="title"
+          id="title"
+          required
+        />
+        <label for="title" class="form__label">Title</label>
+      </div>
+      <div class="form__group field">
+        <input
+          type="input"
+          class="form__field"
+          placeholder="content"
+          name="content"
+          id="content"
+          required
+        />
+        <label for="content" class="form__label">Content</label>
+        <button class="btn btn-primary btn-block btn-large" type="submit">
+          Create
+        </button>
+      </div>
+    </form>
+  </body>
+</html>
