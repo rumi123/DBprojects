@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      body {
+        background-color: black;
+      }
+      .info{
+          background-color:gold;
+          color: white;
+          padding-left: 40%;
+          padding-top: 10pt;
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User details</title>
+  </head>
+  <body>
+    <div class="info">
+      <h1>Detials of <%= name %></h1>
+      <p>
+        Email id: <%= email %> <br />
+        Age: <%= age %> <br />
+        Password: <%= password %>
+      </p>
+    </div>
+  </body>
+</html>

@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 
 const app = express();
 
+
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({
@@ -39,8 +40,15 @@ app.get("/signup",(req,res)=>{
     res.sendFile(__dirname+"/signup.html")
 });
 
+
 app.get("/signin",(req,res)=>{
     res.sendFile(__dirname+"/signin.html")
+});
+
+app.get("/user",(req,res)=>{
+    User.findOne({name:"jonathan"},(err,data)=>{
+        res.render("userDetails",data)
+    })
 });
 
 app.post("/newUser",(req,res)=>{
@@ -70,10 +78,9 @@ app.get("/create",(req,res)=>{
 
 
 
-
 app.route("/articles").get((req, res) => {
     Article.find((err, articledata) => {
-        res.send(articledata);
+        res.render("articles",{article:articledata})
     });
 }).post((req, res) => {
     const article = new Article(req.body);
@@ -94,12 +101,15 @@ app.route("/articles").get((req, res) => {
         }
     })
 });
-
+app.post('/articleSelected',(req,res)=>{
+    console.log(req.body);
+    res.redirect("/articles/"+req.body.check)
+})
 app.route("/articles/:articleTitle")
 .get((req,res)=>{
     Article.findOne({title:req.params.articleTitle},(err,articleFound)=>{
         if(articleFound){
-            res.send(articleFound);
+            res.render('article',articleFound);
         }else{
             res.send("No such article");
         }
@@ -136,8 +146,8 @@ app.route("/articles/:articleTitle")
 
 
 
-app.listen(3000, function () {
-    console.log("Server started on port 3000");
+app.listen(7000, function () {
+    console.log("Server started on port 7000");
 });
 
 app.get('/', (req, res) => {
